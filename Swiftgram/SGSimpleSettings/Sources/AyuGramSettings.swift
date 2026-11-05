@@ -1,3 +1,4 @@
+import SGAppGroupIdentifier
 import Foundation
 
 public struct AyuGramPrivacySettings: Codable, Equatable {
@@ -23,7 +24,7 @@ public struct AyuGramPrivacySettings: Codable, Equatable {
 /// Device-wide preferences, owned by Swiftgram's existing settings store.
 /// A single encoded snapshot makes updates atomic across networking queues.
 public final class AyuGramSettings {
-    public static var shared: AyuGramSettings { SGSimpleSettings.shared.ayuGram }
+    public static let shared = AyuGramSettings(defaults: .standard, shared: UserDefaults(suiteName: APP_GROUP_IDENTIFIER))
     public static let didChange = Notification.Name("Swiftgram.AyuGramSettings.didChange")
     private let defaults: UserDefaults
     /// App group copy of the privacy snapshot. App extensions cannot read the app's
@@ -241,5 +242,12 @@ public extension AyuGramSettings {
     /// Ghost Mode switch used by quick toggles outside the settings screen.
     func setGhostMode(_ enabled: Bool) {
         update { $0.ghostMode = enabled }
+    }
+}
+
+
+extension SGSimpleSettings {
+    public var ayuGram: AyuGramSettings {
+        return AyuGramSettings.shared
     }
 }
