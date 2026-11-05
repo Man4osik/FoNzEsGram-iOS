@@ -1,5 +1,5 @@
 import Foundation
-import WebKit
+@preconcurrency import WebKit
 
 /// The document-start execution profile IOS.md requires of the WEB carrier's web view.
 ///
