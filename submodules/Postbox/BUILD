@@ -8,6 +8,7 @@ package_group(
     name = "clients",
     packages = [
         "//Telegram",
+        "//Swiftgram/...",
         "//Telegram/NotificationService",
         "//submodules/AccountContext",
         "//submodules/AvatarNode",
