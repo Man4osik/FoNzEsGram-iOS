@@ -25,7 +25,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// out with the deployment target. The cost is reach — `conversationContext` ALONE forces 18.4;
 /// everything else would fit under 18.0 — so if a host needs the wider range, moving that one
 /// property behind its own `API_AVAILABLE(ios(18.4))` drops the class to 18.0.
-API_AVAILABLE(ios(18.4))
+@class UIConversationContext;
+
+API_AVAILABLE(ios(18.0))
 @interface IDBlockTextView : UIScrollView <UITextPasteConfigurationSupporting>
 
 @property(nonatomic, copy) NSString *text;
@@ -52,7 +54,7 @@ API_AVAILABLE(ios(18.4))
 @property(nullable, nonatomic, copy) UITextInputPasswordRules *passwordRules;
 @property(nonatomic) UIWritingToolsBehavior writingToolsBehavior;
 @property(nonatomic) UIWritingToolsResultOptions allowedWritingToolsResultOptions;
-@property(nullable, nonatomic, strong) UIConversationContext *conversationContext;
+@property(nullable, nonatomic, strong) UIConversationContext *conversationContext API_AVAILABLE(ios(18.4));
 @property(nonatomic) BOOL allowsNumberPadPopover;
 @property(nullable, nonatomic, copy) UIPasteConfiguration *pasteConfiguration;
 @property(nullable, nonatomic, weak) id<UITextPasteDelegate> pasteDelegate;
