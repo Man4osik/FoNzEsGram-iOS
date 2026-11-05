@@ -18,10 +18,10 @@ class ScrollToTopView: UIScrollView, UIScrollViewDelegate {
             // An invisible tap target over the status bar, above every screen: UIKit's automatic edge effects would blur
             // whatever passes under it. The chat → profile expansion showed it as a haze over the top of the screen and
             // its corners, where the card's edge moves against the chat.
-            self.topEdgeEffect.isHidden = true
-            self.bottomEdgeEffect.isHidden = true
-            self.leftEdgeEffect.isHidden = true
-            self.rightEdgeEffect.isHidden = true
+            (self.value(forKey: "topEdgeEffect") as? UIView)?.isHidden = true
+            (self.value(forKey: "bottomEdgeEffect") as? UIView)?.isHidden = true
+            (self.value(forKey: "leftEdgeEffect") as? UIView)?.isHidden = true
+            (self.value(forKey: "rightEdgeEffect") as? UIView)?.isHidden = true
         }
     }
     
