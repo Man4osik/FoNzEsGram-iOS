@@ -1,5 +1,5 @@
 import Foundation
-import WebKit
+@preconcurrency import WebKit
 
 /// Somewhere for the carrier's `WKWebView` to live in the app's view hierarchy.
 ///
