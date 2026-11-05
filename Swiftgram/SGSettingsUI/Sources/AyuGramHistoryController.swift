@@ -12,7 +12,6 @@ import PresentationDataUtils
 import ItemListUI
 import SGItemListUI
 import SGStrings
-import ConvertOpusToAAC
 
 private enum HistorySection: Int32, SGItemListSection { case summary, deletedChats, entries, options, chats, actions }
 private enum HistoryAction: Hashable { case clear, selectChats, deletedChats, keptChats, chatOptions(Int64), media(String, String), author(Int64), chat(Int64, Int32), filter(Int), menu(Int64, Int32, String, Int32, String?, String) }
