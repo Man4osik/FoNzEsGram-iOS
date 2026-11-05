@@ -8,7 +8,7 @@ permissions:
 
 jobs:
   build:
-    runs-on: macos-14
+    runs-on: macos-15
 
     steps:
       - uses: actions/checkout@v4
@@ -29,6 +29,14 @@ jobs:
             sudo xcode-select -s "$LATEST_XCODE/Contents/Developer"
           fi
           xcodebuild -version
+
+      - name: Restore Bazel Cache
+        uses: actions/cache@v4
+        with:
+          path: /private/var/tmp/_bazel_containerhost
+          key: bazel-cache-${{ runner.os }}-${{ hashFiles('versions.json', 'MODULE.bazel') }}
+          restore-keys: |
+            bazel-cache-${{ runner.os }}-
 
       - name: Create canonical source directory
         run: |
