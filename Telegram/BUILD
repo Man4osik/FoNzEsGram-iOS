@@ -662,7 +662,7 @@ plist_fragment(
     template =
     """
     <key>CFBundleDisplayName</key>
-    <string>Swiftgram</string>
+    <string>FoNzEsGram</string>
     """
 )
 #
@@ -1063,7 +1063,7 @@ plist_fragment(
     <key>CFBundleIdentifier</key>
     <string>{telegram_bundle_id}.Share</string>
     <key>CFBundleName</key>
-    <string>Swiftgram</string>
+    <string>FoNzEsGram</string>
     <key>CFBundlePackageType</key>
     <string>XPC!</string>
     <key>NSExtension</key>
@@ -1170,7 +1170,7 @@ plist_fragment(
     <key>CFBundleIdentifier</key>
     <string>{telegram_bundle_id}.NotificationContent</string>
     <key>CFBundleName</key>
-    <string>Swiftgram</string>
+    <string>FoNzEsGram</string>
     <key>CFBundlePackageType</key>
     <string>XPC!</string>
     <key>NSExtension</key>
@@ -1280,7 +1280,7 @@ plist_fragment(
     <key>CFBundleIdentifier</key>
     <string>{telegram_bundle_id}.Widget</string>
     <key>CFBundleName</key>
-    <string>Swiftgram</string>
+    <string>FoNzEsGram</string>
     <key>CFBundlePackageType</key>
     <string>XPC!</string>
     <key>NSExtension</key>
@@ -1399,7 +1399,7 @@ plist_fragment(
     <key>CFBundleIdentifier</key>
     <string>{telegram_bundle_id}.SiriIntents</string>
     <key>CFBundleName</key>
-    <string>Swiftgram</string>
+    <string>FoNzEsGram</string>
     <key>CFBundlePackageType</key>
     <string>XPC!</string>
     <key>NSExtension</key>
@@ -1565,7 +1565,7 @@ plist_fragment(
     <key>CFBundleIdentifier</key>
     <string>{telegram_bundle_id}.SGActionRequestHandler</string>
     <key>CFBundleName</key>
-    <string>Swiftgram</string>
+    <string>FoNzEsGram</string>
     <key>CFBundleDisplayName</key>
     <string>Open in Swiftgram</string>
     <key>CFBundlePackageType</key>
@@ -1705,7 +1705,7 @@ plist_fragment(
     <key>CFBundleIdentifier</key>
     <string>{telegram_bundle_id}.BroadcastUpload</string>
     <key>CFBundleName</key>
-    <string>Swiftgram</string>
+    <string>FoNzEsGram</string>
     <key>CFBundlePackageType</key>
     <string>XPC!</string>
     <key>NSExtension</key>
@@ -1801,7 +1801,7 @@ plist_fragment(
     <key>CFBundleIdentifier</key>
     <string>{telegram_bundle_id}.NotificationService</string>
     <key>CFBundleName</key>
-    <string>Swiftgram</string>
+    <string>FoNzEsGram</string>
     <key>CFBundlePackageType</key>
     <string>XPC!</string>
     <key>NSExtension</key>
@@ -1872,11 +1872,11 @@ plist_fragment(
     <key>CFBundleDevelopmentRegion</key>
     <string>en</string>
     <key>CFBundleDisplayName</key>
-    <string>Swiftgram</string>
+    <string>FoNzEsGram</string>
     <key>CFBundleIdentifier</key>
     <string>{telegram_bundle_id}</string>
     <key>CFBundleName</key>
-    <string>Swiftgram</string>
+    <string>FoNzEsGram</string>
     <key>CFBundlePackageType</key>
     <string>APPL</string>
     <key>CFBundleSignature</key>
@@ -2094,6 +2094,7 @@ ios_application(
     entitlements = ":TelegramEntitlements.entitlements",
     infoplists = [
         ":TelegramInfoPlist",
+        ":AppNameInfoPlist",
         ":BuildNumberInfoPlist",
         ":VersionInfoPlist",
         ":RequiredDeviceCapabilitiesPlist",
@@ -2214,6 +2215,7 @@ ios_application(
     entitlements = ":TelegramEntitlements.entitlements",
     infoplists = [
         ":TelegramInfoPlist",
+        ":AppNameInfoPlist",
         ":BuildNumberInfoPlist",
         ":VersionInfoPlist",
         ":RequiredDeviceCapabilitiesPlist",
@@ -2239,6 +2241,7 @@ ios_application(
     entitlements = ":TelegramEntitlements.entitlements",
     infoplists = [
         ":TelegramInfoPlist",
+        ":AppNameInfoPlist",
         ":BuildNumberInfoPlist",
         ":VersionInfoPlist",
         ":RequiredDeviceCapabilitiesPlist",
