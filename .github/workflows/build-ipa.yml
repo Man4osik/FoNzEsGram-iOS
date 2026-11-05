@@ -1,0 +1,47 @@
+name: Build FoNzEsGram (Sideloadly Ready)
+
+on:
+  workflow_dispatch:
+    inputs:
+      ipa_url:
+        description: 'URL к Base IPA'
+        required: false
+        default: 'https://github.com/mapix3/AyuGram-iOS/releases/download/build-207501/AyuGram-standard-207501.ipa'
+
+jobs:
+  build:
+    runs-on: macos-14
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download Base IPA
+        run: |
+          echo "Скачиваем базу..."
+          curl -L -o base.ipa "${{ inputs.ipa_url }}"
+          unzip -q base.ipa -d app_extracted
+
+      - name: Optimize for Sideloadly & FoNzEs Branding
+        run: |
+          APP_PATH=$(find app_extracted/Payload -maxdepth 1 -name "*.app")
+          echo "Приложение: $APP_PATH"
+
+          # 1. Удаляем расширения, чтобы бесплатный Apple ID в Sideloadly не ловил лимиты
+          if [ -d "$APP_PATH/PlugIns" ]; then
+            rm -rf "$APP_PATH/PlugIns"
+          fi
+          if [ -d "$APP_PATH/Watch" ]; then
+            rm -rf "$APP_PATH/Watch"
+          fi
+
+          # 2. Пакуем чистый IPA
+          cd app_extracted
+          zip -qr ../FoNzEsGram_Sideloadly.ipa Payload
+          cd ..
+
+      - name: Upload IPA Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: FoNzEsGram_Sideloadly
+          path: FoNzEsGram_Sideloadly.ipa
+          retention-days: 14
