@@ -3,10 +3,14 @@ name: Build FoNzEsGram (Sideloadly Ready)
 on:
   workflow_dispatch:
     inputs:
+      app_name:
+        description: 'Название приложения на экране iPhone'
+        required: true
+        default: 'FoNzEsGram'
       ipa_url:
-        description: 'URL к Base IPA'
+        description: 'URL к Base IPA (по умолчанию сборка с кастомным оформлением/шейдерами)'
         required: false
-        default: 'https://github.com/mapix3/AyuGram-iOS/releases/download/build-207501/AyuGram-standard-207501.ipa'
+        default: 'https://github.com/mapix3/AyuGram-iOS/releases/download/build-207201/AyuGram-custom-207201.ipa'
 
 jobs:
   build:
@@ -21,12 +25,18 @@ jobs:
           curl -L -o base.ipa "${{ inputs.ipa_url }}"
           unzip -q base.ipa -d app_extracted
 
-      - name: Optimize for Sideloadly & FoNzEs Branding
+      - name: Customize Name, Shaders & Optimize for Sideloadly
         run: |
           APP_PATH=$(find app_extracted/Payload -maxdepth 1 -name "*.app")
           echo "Приложение: $APP_PATH"
 
-          # 1. Удаляем расширения, чтобы бесплатный Apple ID в Sideloadly не ловил лимиты
+          # 1. Меняем отображаемое название приложения на FoNzEsGram (или кастомное из поля)
+          APP_NAME="${{ inputs.app_name }}"
+          echo "Устанавливаем название: $APP_NAME"
+          plutil -replace CFBundleDisplayName -string "$APP_NAME" "$APP_PATH/Info.plist"
+          plutil -replace CFBundleName -string "$APP_NAME" "$APP_PATH/Info.plist"
+
+          # 2. Удаляем PlugIns (расширения), чтобы Sideloadly на бесплатном Apple ID не ловил лимиты
           if [ -d "$APP_PATH/PlugIns" ]; then
             rm -rf "$APP_PATH/PlugIns"
           fi
@@ -34,7 +44,7 @@ jobs:
             rm -rf "$APP_PATH/Watch"
           fi
 
-          # 2. Пакуем чистый IPA
+          # 3. Пакуем готовый IPA
           cd app_extracted
           zip -qr ../FoNzEsGram_Sideloadly.ipa Payload
           cd ..
