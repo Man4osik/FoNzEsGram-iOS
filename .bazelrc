@@ -1,3 +1,4 @@
+build --macos_minimum_os=14.0
 build --action_env=ZERO_AR_DATE=1
 
 build --enable_platform_specific_config
