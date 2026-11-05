@@ -7,7 +7,7 @@ swift_binary(
     name = "SwiftTL",
     module_name = "SwiftTL",
     srcs = glob(["Sources/SwiftTL/**/*.swift"]),
-    # SchemaBlob compresses the schema table with zlib.
-    linkopts = ["-lz"],
+    copts = ["-target", "arm64-apple-macos14.0"],
+    linkopts = ["-lz", "-target", "arm64-apple-macos14.0"],
     visibility = ["//submodules/TelegramApi:__pkg__"],
 )
